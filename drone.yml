@@ -1,0 +1,19 @@
+kind: pipeline
+name: default
+
+steps:
+  - name: JSX Eval
+    image: node
+    commands:
+      - npm install -g enzyme
+      - npm install -g jest
+      - npm install -g enzyme-adapter-react-16
+      - git clone https://github.com/unsortedArray/JSX_CASES.git
+      - cd JSX_CASES
+      - cp -a ./ ../src/tests
+      - npm install -g enzyme
+      - npm install -g jest
+      - cd ..
+      - rm -rf JSX_CASES
+      - npm install
+      - npm run test --exit 
